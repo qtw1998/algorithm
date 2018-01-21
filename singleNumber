@@ -1,0 +1,43 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+
+/**
+ *记录次数的一个模块
+ *@param arr 输入的数组
+ *@param n   输入的数组的长度
+ *@param k   输入的要求比较的值的大小
+ */
+int CountLetter(int* arr,int n,int k){
+    int i ;
+    int count = 0;
+    for(i = 0; i < n ;i++){
+        if(arr[i] == k){
+            count ++;
+        }
+    }
+    
+    return count;
+    
+}
+
+
+int singleNumber (int* nums, int numsSize){
+    int i;
+    for(i = 0 ; i < numsSize ; i++){
+        int count = CountLetter(nums,numsSize,nums[i]);
+        if (count == 1){
+            return nums[i];
+        }
+        
+    }
+    return 0;
+}
+
+int main(){
+    int result;
+    int s[] = {1,2,2,3,3,4,4,5,1};
+    result = singleNumber(s, sizeof(s)/sizeof(s[0]));
+    printf("%d\n",result);
+    return 0;
+}
